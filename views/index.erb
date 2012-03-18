@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<style type="text/css">
+		#header {
+			width:100%;
+			background:url(/images/bg.png) repeat-x;
+			height:36px;
+			font-size:1.4em;
+			color:#fff;
+			border-bottom: 1px solid #444;
+		}
+		#header span {
+			line-height: 2.2em;
+			margin: 10px;
+		}
+		td {
+			padding: 5px;
+		}
+		th {
+			background: url(/images/bg_sub.png) repeat-x;
+			height: 20px;
+			color: #000;
+			font-weight: normal;
+			border-bottom: 1px solid #888;
+			border-top: 1px solid #fff;
+			text-align: left;
+		}
+		table {
+			width: 100%;
+			border-collapse: collapse;
+		}
+		body {
+			padding: 0; margin: 0;
+			font: 12px/18px "Lucida Grande", "Lucida Sans Unicode", Arial, Verdana, sans-serif;
+			background-color: #fff;
+			color: #333;
+		}
+		.selected {
+			background-color: #3875D7 !important;
+			color: #fff;
+		}
+		.even {
+			background-color: #F3F6FA;
+		}
+	</style>
+	<script type="text/javascript">
+	$(function() {
+		$("tbody tr:even").addClass("even");
+		$("tbody tr").click(function(event) {
+			$("tbody tr").removeClass("selected");
+			$(this).addClass("selected");
+		});
+	});
+	</script>
+	
+	<title><%= @@title %></title>
+</head>
+
+<body>
+	<div id="header"><span><%= @@title %></span></div>
+<table>
+<thead>
+	<tr>
+		<th>Name</th>
+		<th>Version</th>
+		<th>Size</th>
+		<th>Post Date</th>
+    	<th></th>
+		<th></th>
+	</tr>
+</thead>
+<tbody>
+	<% @@products.each do |p| %>
+	<tr>
+		<td><%= p['title'] %></td>
+		<td><%= p['version'] %></td>
+		<td><%= p['size'] %> MB</td>
+		<td><%= p['date'] %></td>
+		<td><a href="<%= p['url'] %>"><img src="/images/arrow-270.png" title="Download" alt="Download"/></a></td>
+		<td><a href="<%= p['mdurl'] %>"><img src="/images/information.png" title="Get Info" alt="Get Info"/></a></td>
+	</tr>	
+<% end %>
+</tbody>
+</body>
+</html>

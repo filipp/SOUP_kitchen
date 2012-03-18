@@ -5,13 +5,14 @@ SOUP Kitchen is a simple web front-end to OS X Server's Software Update service 
 
 ##USAGE##
 
-> sudo gem install sinatra
-> cd soup\_kitchen
-> ruby -rubygems app.rb http://your.sus.server.com:8080/index.sucatalog
-
-Browse to http://localhost:4567
+	sudo gem install sinatra
+	cd soup\_kitchen
+	ruby -rubygems app.rb http://your.sus.server.com:8080/index.sucatalog
+	Browse to http://localhost:4567
 
 The update catalog is loaded on startup. A reload can be forced by visiting /reload. Clicking the download link will download the *biggest package from that update* (see bugs below). The info button will take you to the metadata file for that update.
+
+SOUP Kitchen *does not* have to be running on the same machine as the SU service.
 
 
 ##BUGS##
